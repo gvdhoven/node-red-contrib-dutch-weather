@@ -1,6 +1,6 @@
 module.exports = function(RED) {
 	"use strict";
-	const Sun = require('./lib/Sun');
+
 	const MINUTE = 60000;
 
 	/**
@@ -24,6 +24,7 @@ module.exports = function(RED) {
 	/**
 	 * Sun events node
 	 */
+	const Sun = require('./lib/Sun');
 	function dutchWeatherSunEvents(n) {
 		RED.nodes.createNode(this, n);
 		this.conf = RED.nodes.getNode(n.conf);
