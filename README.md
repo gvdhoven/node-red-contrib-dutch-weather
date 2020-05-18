@@ -8,3 +8,4 @@ Usage:
 - Execute `EXPORT DEBUG=webunity:weather:*`
 - Run `node test.js`
 - Use the event emitters in your own code (see `test.js`)
+https://fontawesome.com/v4.7.0/icon/wrench
