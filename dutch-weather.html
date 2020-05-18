@@ -1,0 +1,62 @@
+<!-- Config node -->
+
+<script type="text/x-red" data-template-name="dutch-weather-conf">
+	<div class="form-row">
+		<label for="node-config-input-lat"><i class="icon-tag"></i> Latitude</label>
+		<input type="text" id="node-config-input-lat">
+	</div>
+	<div class="form-row">
+		<label for="node-config-input-lng"><i class="icon-tag"></i> Longitude</label>
+		<input type="password" id="node-config-input-lng">
+	</div>
+</script>
+
+<script type="text/javascript">
+	RED.nodes.registerType('dutch-weather-conf',{
+		category: 'config',
+		defaults: {
+			lat: { value: 51.424080, required: true, validate: RED.validators.regex(/[0-9]*\.?[0-9]*/) },
+			lng: { value: 5.442794, required: true, validate: RED.validators.regex(/[0-9]*\.?[0-9]*/) }
+		},
+		color: '#D3D3D3',
+		icon: 'font-awesome/fa-wrench',
+		label: function() {
+			return 'Configuration';
+		}
+	});
+</script>
+
+
+
+<!-- SUN node -->
+
+<script type="text/x-red" data-template-name="dutch-weather-sun-events">
+	<div class="form-row">
+		<label for="node-input-conf"><i class="icon-tag"></i> Location</label>
+		<input type="text" id="node-input-conf">
+	</div>
+	<div class="form-row">
+		<input type="hidden" id="node-input-name">
+	</div>
+	<div class="form-row">
+		<input type="hidden" id="node-input-topic">
+	</div>
+</script>
+
+<script type="text/javascript">
+	RED.nodes.registerType('dutch-weather-sun-events', {
+		category: 'Dutch_Weather',
+		defaults: {
+			conf: { value: '', type: 'dutch-weather-conf', required: true },
+			name: { },
+			topic: { }
+		},
+		outputs: 1,
+		inputs: 0,
+		color: '#D3D3D3',
+		icon: 'font-awesome/fa-sun-o',
+		label: function() {
+			return 'Sun events';
+		}
+	})
+</script>
