@@ -65,7 +65,7 @@ module.exports = function(RED) {
 		this.conf.weatherLogic.on('sun-events', function (events) {
 			node.send({ 'topic': 'sun-events', 'payload': events });
 		});
-		setTimeout(function() { node.conf.weatherLogic.updateSun(true); }, 500);
+		setTimeout(function() { node.conf.weatherLogic.updateSun(true); }, 1000);
 
 	}
 	RED.nodes.registerType("solar-events", dutchWeatherSolarEvents);
@@ -84,32 +84,34 @@ module.exports = function(RED) {
 		}
 
 		var node = this;
-		this.conf.weatherLogic.on('rain', function (isRaining, inMinutes) {
-			/*if (isRaining == true) {
-				if (inMinutes == 0) {
-					Helper.Debug('  - It is raining.');
-				} else {
-					Helper.Debug('  - It will start raining in ' + inMinutes + ' minutes.');
-				}
-			} else {
-				if (inMinutes == 0) {
-					Helper.Debug('  - It is dry.');
-				} else {
-					Helper.Debug('  - It will be dry in ' + inMinutes + ' minutes.');
-				}
-			}*/
-
+		this.conf.weatherLogic.on('state', function (isRaining, buienRadar, buienAlarm) {
 			var msg = {
-				'topic': 'rain-events',
+				'topic': 'rain-events-state',
 				'payload': {
-					'isRaining': ((isRaining == true) && (inMinutes == 0)),
-					'willChange': (inMinutes > 0),
-					'inMinutes': inMinutes
+					'currentState': (isRaining == true) ? 'raining' : 'dry',
+					'precipitation': {
+						'buienRadar': buienRadar || 0,
+						'buienAlarm': buienAlarm || 0
+					}
 				}
 			};
 			node.send(msg);
 		});
-		setTimeout(function() { node.conf.weatherLogic.emit('rain', node.conf.weatherLogic.rainState, 0) }, 500);
+		this.conf.weatherLogic.on('prediction', function (isRaining, inMinutes, buienRadar, buienAlarm) {
+			var msg = {
+				'topic': 'rain-events-prediction',
+				'payload': {
+					'predictedState': (isRaining == true) ? 'raining' : 'dry',
+					'inMinutes': inMinutes,
+					'precipitation': {
+						'buienRadar': buienRadar || 0,
+						'buienAlarm': buienAlarm || 0
+					}
+				}
+			};
+			node.send(msg);
+		});
+		setTimeout(function() { node.conf.weatherLogic.checkRain(); }, 1000);
 	}
 	RED.nodes.registerType("rain-events", dutchWeatherRainEvents);
 
@@ -130,7 +132,7 @@ module.exports = function(RED) {
 		this.conf.weatherLogic.on('meteoplaza', function (meteoplaza) {
 			node.send({ 'topic': 'meteoplaza', 'payload': meteoplaza });
 		});
-		setTimeout(function() { node.conf.weatherLogic.updateMeteoplaza(true); }, 500);
+		setTimeout(function() { node.conf.weatherLogic.updateMeteoplaza(true); }, 1000);
 
 	}
 	RED.nodes.registerType("meteoplaza", dutchWeatherMeteoplaza);
