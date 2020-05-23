@@ -1,6 +1,7 @@
 # node-red-contrib-dutch-weather
 ================================
-Combination of a solar position calculation (angle & elevation) and (Dutch) rain providers in order to, for example, automate the blinds and screens based on sun position and if it is raining or dry.
+
+A combination of a solar position calculation (angle & elevation) and (Dutch) rain providers in order to, for example, automate blinds and screens based on sun position (or) open them if it is going to raining all of a sudden.
 In addition it pulls an API from Meteoplaza to give you humidity, barometic pressue, min/max temp for the day, hourly temp statistics, wind direction and speed in Beaufort, m/s and km/h.
 
 [![NPM](https://nodei.co/npm/node-red-contrib-dutch-weather.png)](https://nodei.co/npm/node-red-contrib-dutch-weather/)
