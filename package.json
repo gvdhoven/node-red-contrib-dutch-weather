@@ -7,10 +7,20 @@
       "test": "echo \"No test specified\""
    },
    "keywords": [
-      "buienradar",
-      "azimuth",
-      "zenith",
-      "angle"
+      "node-red",
+      "Buienalarm",
+      "Buienradar",
+      "Meteoplaza",
+      "Solar position",
+      "Solar events",
+      "Moon phases",
+      "Moon phases",
+      "New moon",
+      "Full moon",
+      "First quarter",
+      "Last quarter",
+      "Precipitation prediction",
+      "Rainfall"
    ],
    "node-red": {
       "nodes": {
@@ -26,7 +36,7 @@
    },
    "homepage": "https://github.com/Webunity/node-red-contrib-dutch-weather#readme",
    "author": "Gilles van den Hoven <gilles@webunity.nl>",
-   "license": "ISC",
+   "license": "Apache-2.0",
    "dependencies": {
       "got": "^11.1.4",
       "moment": "^2.25.3",
