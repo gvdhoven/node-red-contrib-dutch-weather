@@ -84,32 +84,11 @@ module.exports = function(RED) {
 		}
 
 		var node = this;
-		this.conf.weatherLogic.on('state', function (isRaining, buienRadar, buienAlarm) {
-			var msg = {
-				'topic': 'rain-events-state',
-				'payload': {
-					'currentState': (isRaining == true) ? 'raining' : 'dry',
-					'precipitation': {
-						'buienRadar': buienRadar || 0,
-						'buienAlarm': buienAlarm || 0
-					}
-				}
-			};
-			node.send(msg);
+		this.conf.weatherLogic.on('rain-state', function (state) {
+			node.send({ 'topic': 'rain-events-rain-state', 'payload': state});
 		});
-		this.conf.weatherLogic.on('prediction', function (isRaining, inMinutes, buienRadar, buienAlarm) {
-			var msg = {
-				'topic': 'rain-events-prediction',
-				'payload': {
-					'predictedState': (isRaining == true) ? 'raining' : 'dry',
-					'inMinutes': inMinutes,
-					'precipitation': {
-						'buienRadar': buienRadar || 0,
-						'buienAlarm': buienAlarm || 0
-					}
-				}
-			};
-			node.send(msg);
+		this.conf.weatherLogic.on('rain-prediction', function (prediction) {
+			node.send({ 'topic': 'rain-events-rain-prediction', 'payload': prediction});
 		});
 		setTimeout(function() { node.conf.weatherLogic.checkRain(); }, 1000);
 	}
