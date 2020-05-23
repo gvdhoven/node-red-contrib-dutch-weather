@@ -1,10 +1,10 @@
 {
    "name":"node-red-contrib-dutch-weather",
    "version":"0.0.1",
-   "description":"Dutch rain info & solar calculation for home automation",
+   "description":"Dutch rain info & solar calculation for use with node-red",
    "main":"index.js",
    "scripts":{
-      "test":"echo \"Error: no test specified\" && exit 1"
+      "test":"echo \"No test specified\""
    },
    "keywords":[
       "buienradar",
