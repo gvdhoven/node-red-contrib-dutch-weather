@@ -14,7 +14,7 @@ function exitHandler(options, err) {
 	}
 
 	if (err) {
-		//console.log(err.stack);
+		console.log(err.stack);
 	}
 
 	if (options.exit) {
@@ -56,13 +56,13 @@ console.log('* Watchting the weather ...');
 var Weather = new WeatherLogic(51.42408, 5.442794);
 
 Weather.on('sun-position', function (position) {
-	console.log('* Sun position update:');
-	console.log('  - ' + Util.inspect(position));
+	//console.log('* Sun position update:');
+	//console.log('  - ' + Util.inspect(position));
 });
 
 Weather.on('sun-events', function (events) {
-	console.log('* Sun events update:');
-	console.log('  - ' + Util.inspect(events));
+	//console.log('* Sun events update:');
+	//console.log('  - ' + Util.inspect(events));
 });
 
 Weather.on('rain-debug', function (msg) {
