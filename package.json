@@ -4,42 +4,42 @@
    "description": "Dutch rain info & solar calculation for use with node-red",
    "main": "index.js",
    "scripts": {
-      "test": "echo \"No test specified\""
+	  "test": "echo \"No test specified\""
    },
    "keywords": [
-      "node-red",
-      "Buienalarm",
-      "Buienradar",
-      "Meteoplaza",
-      "Solar position",
-      "Solar events",
-      "Moon phases",
-      "Moon phases",
-      "New moon",
-      "Full moon",
-      "First quarter",
-      "Last quarter",
-      "Precipitation prediction",
-      "Rainfall"
+	  "node-red",
+	  "Buienalarm",
+	  "Buienradar",
+	  "Meteoplaza",
+	  "Solar position",
+	  "Solar events",
+	  "Moon phases",
+	  "Moon phases",
+	  "New moon",
+	  "Full moon",
+	  "First quarter",
+	  "Last quarter",
+	  "Precipitation prediction",
+	  "Rainfall"
    ],
    "node-red": {
-      "nodes": {
-         "dutch-weather": "dutch-weather.js"
-      }
+	  "nodes": {
+		 "dutch-weather": "dutch-weather.js"
+	  }
    },
    "repository": {
-      "type": "git",
-      "url": "git+https://github.com/Webunity/node-red-contrib-dutch-weather.git"
+	  "type": "git",
+	  "url": "git+https://github.com/Webunity/node-red-contrib-dutch-weather.git"
    },
    "bugs": {
-      "url": "https://github.com/Webunity/node-red-contrib-dutch-weather/issues"
+	  "url": "https://github.com/Webunity/node-red-contrib-dutch-weather/issues"
    },
    "homepage": "https://github.com/Webunity/node-red-contrib-dutch-weather#readme",
    "author": "Gilles van den Hoven <gilles@webunity.nl>",
    "license": "Apache-2.0",
    "dependencies": {
-      "got": "^11.1.4",
-      "moment": "^2.25.3",
-      "suncalc2": "^1.8.1"
+	  "moment": "^2.25.3",
+	  "node-fetch": "^2.6.0",
+	  "suncalc2": "^1.8.1"
    }
 }
