@@ -29,15 +29,16 @@
 		},
 		"repository": {
 				"type": "git",
-				"url": "git+https://github.com/Webunity/node-red-contrib-dutch-weather.git"
+				"url": "git+https://github.com/gvdhoven/node-red-contrib-dutch-weather.git"
 		},
 		"bugs": {
-				"url": "https://github.com/Webunity/node-red-contrib-dutch-weather/issues"
+				"url": "https://github.com/gvdhoven/node-red-contrib-dutch-weather/issues"
 		},
-		"homepage": "https://github.com/Webunity/node-red-contrib-dutch-weather#readme",
+		"homepage": "https://github.com/gvdhoven/node-red-contrib-dutch-weather#readme",
 		"author": "Gilles van den Hoven <gilles@webunity.nl>",
 		"license": "Apache-2.0",
 		"dependencies": {
+				"lodash.isequal": "^4.5.0",
 				"moment": "^2.25.3",
 				"node-fetch": "^2.6.0",
 				"suncalc2": "^1.8.1"

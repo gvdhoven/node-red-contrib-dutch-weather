@@ -84,9 +84,6 @@ module.exports = function(RED) {
 		}
 
 		var node = this;
-		this.conf.weatherLogic.on('rain-state', function (state) {
-			node.send({ 'topic': 'rain-events-rain-state', 'payload': state});
-		});
 		this.conf.weatherLogic.on('rain-prediction', function (prediction) {
 			node.send({ 'topic': 'rain-events-rain-prediction', 'payload': prediction});
 		});
