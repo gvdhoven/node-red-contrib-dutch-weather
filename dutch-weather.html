@@ -2,11 +2,11 @@
 
 <script type="text/x-red" data-template-name="dutch-weather-conf">
 	<div class="form-row">
-		<label for="node-config-input-lat"><i class="fa fa-compass"></i> Latitude</label>
+		<label for="node-config-input-lat"><i class="fa fa-map-marker"></i> Latitude</label>
 		<input type="text" id="node-config-input-lat">
 	</div>
 	<div class="form-row">
-		<label for="node-config-input-lng"><i class="fa fa-compass"></i> Longitude</label>
+		<label for="node-config-input-lng"><i class="fa fa-map-marker"></i> Longitude</label>
 		<input type="text" id="node-config-input-lng">
 	</div>
 </script>
@@ -24,7 +24,7 @@
 			lng: { value: 5.442794, required: true, validate: function (v) { return !isNaN(filterFloat(v)); } }
 		},
 		color: '#D3D3D3',
-		icon: 'font-awesome/fa-wrench',
+		icon: 'font-awesome/fa-map-marker',
 		label: function() {
 			return 'Dutch weather for ' + parseFloat(this.lat).toFixed(2) + ',' + parseFloat(this.lng).toFixed(2);
 		}
@@ -37,7 +37,7 @@
 
 <script type="text/x-red" data-template-name="sun-position">
 	<div class="form-row">
-		<label for="node-input-conf"><i class="fa fa-compass"></i> Location configuration</label>
+		<label for="node-input-conf"><i class="fa fa-map-marker"></i> Location configuration</label>
 		<input type="text" id="node-input-conf">
 	</div>
 	<div class="form-row">
@@ -63,7 +63,7 @@
 		outputs: 1,
 		inputs: 0,
 		color: '#ffd700',
-		icon: 'font-awesome/fa-compass-o',
+		icon: 'font-awesome/fa-location-arrow',
 		label: function() {
 			return 'Sun position';
 		}
@@ -76,7 +76,7 @@
 
 <script type="text/x-red" data-template-name="solar-events">
 	<div class="form-row">
-		<label for="node-input-conf"><i class="fa fa-compass"></i> Location configuration</label>
+		<label for="node-input-conf"><i class="fa fa-map-marker"></i> Location configuration</label>
 		<input type="text" id="node-input-conf">
 	</div>
 	<div class="form-row">
@@ -102,7 +102,7 @@
 		outputs: 1,
 		inputs: 0,
 		color: '#ffd700',
-		icon: 'font-awesome/fa-sun-o',
+		icon: 'font-awesome/fa-sun',
 		label: function() {
 			return 'Solar events';
 		}
@@ -111,11 +111,11 @@
 
 
 
-<!-- Rain events node -->
+<!-- Rain state node -->
 
-<script type="text/x-red" data-template-name="rain-events">
+<script type="text/x-red" data-template-name="rain-state">
 	<div class="form-row">
-		<label for="node-input-conf"><i class="fa fa-compass"></i> Location configuration</label>
+		<label for="node-input-conf"><i class="fa fa-map-marker"></i> Location configuration</label>
 		<input type="text" id="node-input-conf">
 	</div>
 	<div class="form-row">
@@ -126,12 +126,12 @@
 	</div>
 </script>
 
-<script type="text/x-red" data-help-name="rain-events">
+<script type="text/x-red" data-help-name="rain-state">
   <p>Provides information from the Dutch rain info provider Buienalarm at the interval defined in the configuration node.</p>
 </script>
 
 <script type="text/javascript">
-	RED.nodes.registerType('rain-events', {
+	RED.nodes.registerType('rain-state', {
 		category: 'Dutch_Weather',
 		defaults: {
 			conf: { value: '', type: 'dutch-weather-conf', required: true },
@@ -143,7 +143,7 @@
 		color: '#4CA3DD',
 		icon: 'font-awesome/fa-tint',
 		label: function() {
-			return 'Rain events';
+			return 'Rain state';
 		}
 	})
 </script>
@@ -154,7 +154,7 @@
 
 <script type="text/x-red" data-template-name="meteoplaza">
 	<div class="form-row">
-		<label for="node-input-conf"><i class="fa fa-compass"></i> Location configuration</label>
+		<label for="node-input-conf"><i class="fa fa-map-marker"></i> Location configuration</label>
 		<input type="text" id="node-input-conf">
 	</div>
 	<div class="form-row">
