@@ -65,8 +65,8 @@ Weather.on('sun-events', function (events) {
 	//console.log('  - ' + Util.inspect(events));
 });
 
-Weather.on('rain-prediction', function (prediction) {
-	console.log('* Rain prediction update:');
+Weather.on('rain-state', function (prediction) {
+	console.log('* Rain state update:');
 	console.log('  - ' + Util.inspect(prediction));
 });
 
