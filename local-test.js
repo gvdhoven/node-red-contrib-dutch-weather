@@ -57,22 +57,22 @@ var Weather = new WeatherLogic(51.42408, 5.442794);
 
 Weather.on('sun-position', function (position) {
 	console.log('* Sun position update:');
-	console.log('  - ' + Util.inspect(position));
+	console.log('  - ' + JSON.stringify(position));
 });
 
 Weather.on('solar-events', function (events) {
 	console.log('* Solar events update:');
-	console.log('  - ' + Util.inspect(events));
+	console.log('  - ' + JSON.stringify(events));
 });
 
 Weather.on('rain-state', function (prediction) {
 	console.log('* Rain state update:');
-	console.log('  - ' + Util.inspect(prediction));
+	console.log('  - ' + JSON.stringify(prediction));
 });
 
 Weather.on('meteoplaza', function (meteoplaza) {
 	console.log('* Meteoplaza update:');
-	console.log('  - ' + Util.inspect(meteoplaza));
+	console.log('  - ' + JSON.stringify(meteoplaza));
 });
 
 Weather.startMonitor();
