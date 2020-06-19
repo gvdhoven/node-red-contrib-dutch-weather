@@ -56,13 +56,13 @@ console.log('* Watchting the weather ...');
 var Weather = new WeatherLogic(51.42408, 5.442794);
 
 Weather.on('sun-position', function (position) {
-	//console.log('* Sun position update:');
-	//console.log('  - ' + Util.inspect(position));
+	console.log('* Sun position update:');
+	console.log('  - ' + Util.inspect(position));
 });
 
-Weather.on('sun-events', function (events) {
-	//console.log('* Sun events update:');
-	//console.log('  - ' + Util.inspect(events));
+Weather.on('solar-events', function (events) {
+	console.log('* Solar events update:');
+	console.log('  - ' + Util.inspect(events));
 });
 
 Weather.on('rain-state', function (prediction) {
@@ -70,5 +70,13 @@ Weather.on('rain-state', function (prediction) {
 	console.log('  - ' + Util.inspect(prediction));
 });
 
+Weather.on('meteoplaza', function (meteoplaza) {
+	console.log('* Meteoplaza update:');
+	console.log('  - ' + Util.inspect(meteoplaza));
+});
+
 Weather.startMonitor();
 setTimeout(function() { Weather.checkRain(); }, 1000);
+setTimeout(function() { Weather.updateSunPosition(); }, 1000);
+setTimeout(function() { Weather.updateSolarEvents(); }, 1000);
+setTimeout(function() { Weather.updateMeteoplaza(); }, 1000);

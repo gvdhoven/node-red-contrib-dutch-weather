@@ -48,9 +48,9 @@ module.exports = function(RED) {
 
 
 	/**
-	 * Sun events node
+	 * Sun position node
 	 */
-	function dutchWeatherSolarEvents(n) {
+	function dutchWeatherSunPosition(n) {
 		RED.nodes.createNode(this, n);
 		this.conf = RED.nodes.getNode(n.conf);
 
@@ -62,11 +62,28 @@ module.exports = function(RED) {
 		this.conf.weatherLogic.on('sun-position', function (position) {
 			node.send({ 'topic': 'sun-position', 'payload': position });
 		});
-		this.conf.weatherLogic.on('sun-events', function (events) {
-			node.send({ 'topic': 'sun-events', 'payload': events });
-		});
-		setTimeout(function() { node.conf.weatherLogic.updateSun(true); }, 1000);
+		setTimeout(function() { node.conf.weatherLogic.updateSunPosition(true); }, 1000);
+	}
+	RED.nodes.registerType("sun-position", dutchWeatherSunPosition);
 
+
+
+	/**
+	 * Sun events node
+	 */
+	function dutchWeatherSolarEvents(n) {
+		RED.nodes.createNode(this, n);
+		this.conf = RED.nodes.getNode(n.conf);
+
+		if (!this.conf || !this.conf.isValid()) {
+			return null;
+		}
+
+		var node = this;
+		this.conf.weatherLogic.on('solar-events', function (events) {
+			node.send({ 'topic': 'solar-events', 'payload': events });
+		});
+		setTimeout(function() { node.conf.weatherLogic.updateSolarEvents(true); }, 1000);
 	}
 	RED.nodes.registerType("solar-events", dutchWeatherSolarEvents);
 
@@ -75,7 +92,7 @@ module.exports = function(RED) {
 	/**
 	 * Rain events node
 	 */
-	function dutchWeatherRainEvents(n) {
+	function dutchWeatherRainState(n) {
 		RED.nodes.createNode(this, n);
 		this.conf = RED.nodes.getNode(n.conf);
 
@@ -85,11 +102,11 @@ module.exports = function(RED) {
 
 		var node = this;
 		this.conf.weatherLogic.on('rain-state', function (rainState) {
-			node.send({ 'topic': 'rain-events-rain-state', 'payload': rainState});
+			node.send({ 'topic': 'rain-state', 'payload': rainState});
 		});
 		setTimeout(function() { node.conf.weatherLogic.checkRain(); }, 1000);
 	}
-	RED.nodes.registerType("rain-events", dutchWeatherRainEvents);
+	RED.nodes.registerType("rain-state", dutchWeatherRainState);
 
 
 

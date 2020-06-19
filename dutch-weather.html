@@ -33,6 +33,45 @@
 
 
 
+<!-- Sun position node -->
+
+<script type="text/x-red" data-template-name="sun-position">
+	<div class="form-row">
+		<label for="node-input-conf"><i class="fa fa-compass"></i> Location configuration</label>
+		<input type="text" id="node-input-conf">
+	</div>
+	<div class="form-row">
+		<input type="hidden" id="node-input-name">
+	</div>
+	<div class="form-row">
+		<input type="hidden" id="node-input-topic">
+	</div>
+</script>
+
+<script type="text/x-red" data-help-name="sun-position">
+  <p>Provides the postion of the sun (in angle and elevation) as well as solar events at the interval defined in the configuration node.</p>
+</script>
+
+<script type="text/javascript">
+	RED.nodes.registerType('sun-position', {
+		category: 'Dutch_Weather',
+		defaults: {
+			conf: { value: '', type: 'dutch-weather-conf', required: true },
+			name: { },
+			topic: { }
+		},
+		outputs: 1,
+		inputs: 0,
+		color: '#ffd700',
+		icon: 'font-awesome/fa-compass-o',
+		label: function() {
+			return 'Sun position';
+		}
+	})
+</script>
+
+
+
 <!-- Sun events node -->
 
 <script type="text/x-red" data-template-name="solar-events">
@@ -65,7 +104,7 @@
 		color: '#ffd700',
 		icon: 'font-awesome/fa-sun-o',
 		label: function() {
-			return 'Sun events';
+			return 'Solar events';
 		}
 	})
 </script>
