@@ -10,20 +10,16 @@
 		<input type="text" id="node-config-input-lng">
 	</div>
 	<div class="form-row">
-		<label for="node-config-input-spti"><i class="fa fa-clock-o"></i> Sun position updates (in minutes)</label>
-		<input type="text" id="node-config-input-spti">
+		<label for="node-config-input-spti"><i class="fa fa-clock-o"></i> Sun position interval</label>
+		<input type="text" id="node-config-input-spti"> min
 	</div>
 	<div class="form-row">
-		<label for="node-config-input-seti"><i class="fa fa-clock-o"></i> Solar events updates (in minutes)</label>
-		<input type="text" id="node-config-input-seti">
+		<label for="node-config-input-rti"><i class="fa fa-clock-o"></i> Rain prediction interval</label>
+		<input type="text" id="node-config-input-rti"> min
 	</div>
 	<div class="form-row">
-		<label for="node-config-input-rti"><i class="fa fa-clock-o"></i> Rain prediction updates (in minutes)</label>
-		<input type="text" id="node-config-input-rti">
-	</div>
-	<div class="form-row">
-		<label for="node-config-input-mpti"><i class="fa fa-clock-o"></i> Meteoplaza updates (in minutes)</label>
-		<input type="text" id="node-config-input-mpti">
+		<label for="node-config-input-mpti"><i class="fa fa-clock-o"></i> Meteoplaza interval</label>
+		<input type="text" id="node-config-input-mpti"> min
 	</div>
 </script>
 
@@ -38,10 +34,9 @@
 		defaults: {
 			lat: { value: 51.424080, required: true, validate: function (v) { return !isNaN(filterFloat(v)); } },
 			lng: { value: 5.442794, required: true, validate: function (v) { return !isNaN(filterFloat(v)); } },
-			spti: { value: 1, required: true, validate: function (v) { return !isNaN(Math.sign(v)); } },
-			seti: { value: 10, required: true, validate: function (v) { return !isNaN(Math.sign(v)); } },
-			rti: { value: 5, required: true, validate: function (v) { return !isNaN(Math.sign(v)); } },
-			mpti: { value: 10, required: true, validate: function (v) { return !isNaN(Math.sign(v)); } }
+			spti: { value: 1, required: false, validate: function (v) { return ((v != '') && (!isNaN(Math.sign(v)))); } },
+			rti: { value: 5, required: false, validate: function (v) { return ((v != '') && (!isNaN(Math.sign(v)))); } },
+			mpti: { value: 10, required: false, validate: function (v) { return ((v != '') && (!isNaN(Math.sign(v)))); } }
 		},
 		color: '#D3D3D3',
 		icon: 'font-awesome/fa-map-marker',
@@ -69,7 +64,7 @@
 </script>
 
 <script type="text/x-red" data-help-name="sun-position">
-  <p>Provides the postion of the sun (in angle and elevation) as well as solar events at the interval defined in the configuration node.</p>
+  <p>Provides the postion of the sun (in angle and elevation) at the interval defined in the configuration node.</p>
 </script>
 
 <script type="text/javascript">

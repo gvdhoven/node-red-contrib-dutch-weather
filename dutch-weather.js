@@ -1,16 +1,16 @@
+function checkInterval(iv, df) {
+	if (Math.sign(iv) === NaN) {
+		return df;
+	} else if (Math.sign(iv) === -1) {
+		return -1;
+	}
+	return parseInt(iv);
+}
+
 module.exports = function(RED) {
 	"use strict";
 
 	const WeatherLogic = require('./lib/WeatherLogic');
-
-	function checkInterval(iv, df) {
-		if (Math.sign(iv) === NaN) {
-			return df;
-		} else if (Math.sign(iv) === -1)
-			return -1;
-		}
-		return parseInt(iv);
-	}
 
 	/**
 	 * Configuration node which holds only latitude and longitude.
@@ -22,7 +22,6 @@ module.exports = function(RED) {
 		this.lat = n.lat;
 		this.lng = n.lng;
 		this.spti = checkInterval(n.spti, 1);
-		this.seti = checkInterval(n.seti, 10);
 		this.rti = checkInterval(n.rti, 5);
 		this.mpti = checkInterval(n.mpti, 10);
 
@@ -51,7 +50,7 @@ module.exports = function(RED) {
 		this.weatherLogic = null;
 		if (this.isValid()) {
 			this.weatherLogic = new WeatherLogic(this.lat, this.lng);
-			this.weatherLogic.startMonitor(this.spti, this.seti, this.rti, this.mpti);
+			this.weatherLogic.startMonitor(this.spti, this.rti, this.mpti);
 		}
 	}
 	RED.nodes.registerType("dutch-weather-conf", dutchWeatherConf);
@@ -73,9 +72,11 @@ module.exports = function(RED) {
 		this.conf.weatherLogic.on('sun-position', function (position) {
 			node.send({ 'topic': 'sun-position', 'payload': position });
 		});
-        node.on('input', function(msg) {
-            node.conf.weatherLogic.updateSunPosition(true);
-        });
+		node.on('input', function(msg) {
+			if (msg && msg.trigger == true) {
+				node.conf.weatherLogic.updateSunPosition(true);
+			}
+		});
 		setTimeout(function() { node.conf.weatherLogic.updateSunPosition(true); }, 1000);
 	}
 	RED.nodes.registerType("sun-position", dutchWeatherSunPosition);
@@ -97,9 +98,11 @@ module.exports = function(RED) {
 		this.conf.weatherLogic.on('solar-events', function (events) {
 			node.send({ 'topic': 'solar-events', 'payload': events });
 		});
-        node.on('input', function(msg) {
-            node.conf.weatherLogic.updateSolarEvents(true);
-        });
+		node.on('input', function(msg) {
+			if (msg && msg.trigger == true) {
+				node.conf.weatherLogic.updateSolarEvents(true);
+			}
+		});
 		setTimeout(function() { node.conf.weatherLogic.updateSolarEvents(true); }, 1000);
 	}
 	RED.nodes.registerType("solar-events", dutchWeatherSolarEvents);
@@ -121,9 +124,11 @@ module.exports = function(RED) {
 		this.conf.weatherLogic.on('rain-state', function (rainState) {
 			node.send({ 'topic': 'rain-state', 'payload': rainState});
 		});
-        node.on('input', function(msg) {
-            node.conf.weatherLogic.checkRain();
-        });
+		node.on('input', function(msg) {
+			if (msg && msg.trigger == true) {
+				node.conf.weatherLogic.checkRain();
+			}
+		});
 		setTimeout(function() { node.conf.weatherLogic.checkRain(); }, 1000);
 	}
 	RED.nodes.registerType("rain-state", dutchWeatherRainState);
@@ -146,8 +151,10 @@ module.exports = function(RED) {
 			node.send({ 'topic': 'meteoplaza', 'payload': meteoplaza });
 		});
 		node.on('input', function(msg) {
-			node.conf.weatherLogic.updateMeteoplaza(true);
-        });
+			if (msg && msg.trigger == true) {
+				node.conf.weatherLogic.updateMeteoplaza(true);
+			}
+		});
 		setTimeout(function() { node.conf.weatherLogic.updateMeteoplaza(true); }, 1000);
 
 	}
