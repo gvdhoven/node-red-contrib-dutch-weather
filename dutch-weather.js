@@ -73,7 +73,7 @@ module.exports = function(RED) {
 			node.send({ 'topic': 'sun-position', 'payload': position });
 		});
 		node.on('input', function(msg) {
-			if (msg && msg.trigger == true) {
+			if (msg && msg.hasOwnProperty('payload') && (msg.payload.trigger == true)) {
 				node.conf.weatherLogic.updateSunPosition(true);
 			}
 		});
@@ -99,7 +99,7 @@ module.exports = function(RED) {
 			node.send({ 'topic': 'solar-events', 'payload': events });
 		});
 		node.on('input', function(msg) {
-			if (msg && msg.trigger == true) {
+			if (msg && msg.hasOwnProperty('payload') && (msg.payload.trigger == true)) {
 				node.conf.weatherLogic.updateSolarEvents(true);
 			}
 		});
@@ -125,7 +125,7 @@ module.exports = function(RED) {
 			node.send({ 'topic': 'rain-state', 'payload': rainState});
 		});
 		node.on('input', function(msg) {
-			if (msg && msg.trigger == true) {
+			if (msg && msg.hasOwnProperty('payload') && (msg.payload.trigger == true)) {
 				node.conf.weatherLogic.checkRain();
 			}
 		});
@@ -151,7 +151,7 @@ module.exports = function(RED) {
 			node.send({ 'topic': 'meteoplaza', 'payload': meteoplaza });
 		});
 		node.on('input', function(msg) {
-			if (msg && msg.trigger == true) {
+			if (msg && msg.hasOwnProperty('payload') && (msg.payload.trigger == true)) {
 				node.conf.weatherLogic.updateMeteoplaza(true);
 			}
 		});

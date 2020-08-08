@@ -32,7 +32,7 @@ By default any node will automatically refresh once on deployment of the flow. S
 
 ## Manual trigger of updates (since 1.3.2)
 
-All nodes now have an input. This is usefull in case you want to inject a message `{ trigger: true }` when you require an update.
+All nodes now have an input. This is usefull in case you want to inject a message **with payload** `{ trigger: true }` when you require an update.
 
 ## Solar events updated once a day (since 1.3.2)
 
