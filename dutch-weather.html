@@ -9,6 +9,22 @@
 		<label for="node-config-input-lng"><i class="fa fa-map-marker"></i> Longitude</label>
 		<input type="text" id="node-config-input-lng">
 	</div>
+	<div class="form-row">
+		<label for="node-config-input-spti"><i class="fa fa-clock-o"></i> Sun position updates (in minutes)</label>
+		<input type="text" id="node-config-input-spti">
+	</div>
+	<div class="form-row">
+		<label for="node-config-input-seti"><i class="fa fa-clock-o"></i> Solar events updates (in minutes)</label>
+		<input type="text" id="node-config-input-seti">
+	</div>
+	<div class="form-row">
+		<label for="node-config-input-rti"><i class="fa fa-clock-o"></i> Rain prediction updates (in minutes)</label>
+		<input type="text" id="node-config-input-rti">
+	</div>
+	<div class="form-row">
+		<label for="node-config-input-mpti"><i class="fa fa-clock-o"></i> Meteoplaza updates (in minutes)</label>
+		<input type="text" id="node-config-input-mpti">
+	</div>
 </script>
 
 <script type="text/javascript">
@@ -21,7 +37,11 @@
 		category: 'config',
 		defaults: {
 			lat: { value: 51.424080, required: true, validate: function (v) { return !isNaN(filterFloat(v)); } },
-			lng: { value: 5.442794, required: true, validate: function (v) { return !isNaN(filterFloat(v)); } }
+			lng: { value: 5.442794, required: true, validate: function (v) { return !isNaN(filterFloat(v)); } },
+			spti: { value: 1, required: true, validate: function (v) { return !isNaN(Math.sign(v)); } },
+			seti: { value: 10, required: true, validate: function (v) { return !isNaN(Math.sign(v)); } },
+			rti: { value: 5, required: true, validate: function (v) { return !isNaN(Math.sign(v)); } },
+			mpti: { value: 10, required: true, validate: function (v) { return !isNaN(Math.sign(v)); } }
 		},
 		color: '#D3D3D3',
 		icon: 'font-awesome/fa-map-marker',
@@ -60,8 +80,8 @@
 			name: { },
 			topic: { }
 		},
+		inputs: 1,
 		outputs: 1,
-		inputs: 0,
 		color: '#ffd700',
 		icon: 'font-awesome/fa-location-arrow',
 		label: function() {
@@ -99,8 +119,8 @@
 			name: { },
 			topic: { }
 		},
+		inputs: 1,
 		outputs: 1,
-		inputs: 0,
 		color: '#ffd700',
 		icon: 'font-awesome/fa-sun',
 		label: function() {
@@ -138,8 +158,8 @@
 			name: { },
 			topic: { }
 		},
+		inputs: 1,
 		outputs: 1,
-		inputs: 0,
 		color: '#4CA3DD',
 		icon: 'font-awesome/fa-tint',
 		label: function() {
@@ -177,8 +197,8 @@
 			name: { },
 			topic: { }
 		},
+		inputs: 1,
 		outputs: 1,
-		inputs: 0,
 		color: '#528B8B',
 		icon: 'font-awesome/fa-newspaper-o',
 		label: function() {

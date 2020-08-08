@@ -26,6 +26,11 @@ $ npm install node-red-contrib-dutch-weather
 
 For all nodes, you'll need to create at least one configuration. Drag one of the exposed nodes to your flow and set it up just like all other config nodes. After that, you can use the event emitters in your own code.
 
+## Custom update interval and forcing 'updates'
+
+By default any node will automatically refresh once on deployment of the flow. Since version 1.3.0 there is the possibility to set a custom interval for each node when it should refresh. In case you are migrating from a previous version, sane values are set. Setting a value of "-1" for the update interval disables updates entirely.
+This is usefull in case you want to inject a message when you require an update. Send any payload into any of the four nodes to trigger an update of that particular node _and_ reset the update interval (if it was set at all).
+
 ## Testing locally
 
 Since version 1.3.1, the nodes which are available have been changed and/or emit different messages. A local test can be exected with the following commands:
