@@ -26,17 +26,21 @@ $ npm install node-red-contrib-dutch-weather
 
 For all nodes, you'll need to create at least one configuration. Drag one of the exposed nodes to your flow and set it up just like all other config nodes. After that, you can use the event emitters in your own code.
 
-## Custom update interval (since 1.3.2)
+## Custom update interval (since 1.4)
 
 By default any node will automatically refresh once on deployment of the flow. Since version 1.3.0 there is the possibility to set a custom interval for each node in the config node when it should refresh. In case you are migrating from a previous version, you should set values in the config node yourself. Entering 0 or a negative value for the update interval disables updates entirely.
 
-## Manual trigger of updates (since 1.3.2)
+## Manual trigger of updates (since 1.4)
 
 All nodes now have an input. This is usefull in case you want to inject a message **with payload** `{ trigger: true }` when you require an update.
 
-## Solar events updated once a day (since 1.3.2)
+## Solar events updated once a day (since 1.4)
 
 The solar events are (re)calculated when the flows are (re)deployed and every night at 1AM.
+
+## Buienradar and Buienalarm sources added (since 1.4)
+
+In the output node of the rainstate node, you now have a `sources` property with both `Buienradar` and `Buienalarm` as an array for the next 120 minutes.
 
 ## Testing locally
 
