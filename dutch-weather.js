@@ -40,7 +40,7 @@ module.exports = function(RED) {
 		RED.nodes.createNode(this, n);
 		this.conf = RED.nodes.getNode(n.conf);
 
-		if (!this.conf || !this.conf.isValid()) {
+		if (!this.conf) {
 			return null;
 		}
 
@@ -66,7 +66,7 @@ module.exports = function(RED) {
 		RED.nodes.createNode(this, n);
 		this.conf = RED.nodes.getNode(n.conf);
 
-		if (!this.conf || !this.conf.isValid()) {
+		if (!this.conf) {
 			return null;
 		}
 
