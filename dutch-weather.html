@@ -21,6 +21,11 @@
 		<label for="node-config-input-mpti"><i class="fa fa-clock-o"></i> Meteoplaza interval</label>
 		<input type="text" id="node-config-input-mpti"> min
 	</div>
+	<div class="form-row">
+		<label for="node-config-input-update"><i class="fa fa-refresh"></i> Fetch on (re)deploy</label>
+		<input type="checkbox" id="node-config-input-update"> min
+	</div>
+
 </script>
 
 <script type="text/javascript">
@@ -36,7 +41,8 @@
 			lng: { value: 5.442794, required: true, validate: function (v) { return !isNaN(filterFloat(v)); } },
 			spti: { value: 1, required: false, validate: function (v) { return ((v != '') && (!isNaN(Math.sign(v)))); } },
 			rti: { value: 5, required: false, validate: function (v) { return ((v != '') && (!isNaN(Math.sign(v)))); } },
-			mpti: { value: 10, required: false, validate: function (v) { return ((v != '') && (!isNaN(Math.sign(v)))); } }
+			mpti: { value: 10, required: false, validate: function (v) { return ((v != '') && (!isNaN(Math.sign(v)))); } },
+			update: { value: true, required: false, validate: function (v) { return ((v != '') && (!isNaN(Math.sign(v)))); } }
 		},
 		color: '#D3D3D3',
 		icon: 'font-awesome/fa-map-marker',

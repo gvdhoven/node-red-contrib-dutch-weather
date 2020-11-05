@@ -78,7 +78,10 @@ module.exports = function(RED) {
 				node.conf.weatherLogic.updateSunPosition(true);
 			}
 		});
-		setTimeout(function() { node.conf.weatherLogic.updateSunPosition(true); }, 1000);
+
+		if (this.conf.update === true) {
+			setTimeout(function() { node.conf.weatherLogic.updateSunPosition(true); }, 1000);
+		}
 	}
 	RED.nodes.registerType("dutch-weather-sun-position", dutchWeatherSunPosition);
 
@@ -105,7 +108,10 @@ module.exports = function(RED) {
 				node.conf.weatherLogic.updateSolarEvents(true);
 			}
 		});
-		setTimeout(function() { node.conf.weatherLogic.updateSolarEvents(true); }, 1000);
+
+		if (this.conf.update === true) {
+			setTimeout(function() { node.conf.weatherLogic.updateSolarEvents(true); }, 1000);
+		}
 	}
 	RED.nodes.registerType("dutch-weather-solar-events", dutchWeatherSolarEvents);
 
@@ -126,12 +132,16 @@ module.exports = function(RED) {
 		this.conf.weatherLogic.on('rain-state', function (rainState) {
 			node.send({ 'topic': 'rain-state', 'payload': rainState});
 		});
+
 		node.on('input', function(msg) {
 			if (msg && msg.hasOwnProperty('payload') && (msg.payload.trigger == true)) {
 				node.conf.weatherLogic.checkRain();
 			}
 		});
-		setTimeout(function() { node.conf.weatherLogic.checkRain(); }, 1000);
+
+		if (this.conf.update === true) {
+			setTimeout(function() { node.conf.weatherLogic.checkRain(); }, 1000);
+		}
 	}
 	RED.nodes.registerType("dutch-weather-rain-state", dutchWeatherRainState);
 
@@ -152,12 +162,16 @@ module.exports = function(RED) {
 		this.conf.weatherLogic.on('meteoplaza', function (meteoplaza) {
 			node.send({ 'topic': 'meteoplaza', 'payload': meteoplaza });
 		});
+
 		node.on('input', function(msg) {
 			if (msg && msg.hasOwnProperty('payload') && (msg.payload.trigger == true)) {
 				node.conf.weatherLogic.updateMeteoplaza(true);
 			}
 		});
-		setTimeout(function() { node.conf.weatherLogic.updateMeteoplaza(true); }, 1000);
+
+		if (this.conf.update === true) {
+			setTimeout(function() { node.conf.weatherLogic.updateMeteoplaza(true); }, 1000);
+		}
 
 	}
 	RED.nodes.registerType("dutch-weather-meteoplaza", dutchWeatherMeteoplaza);
