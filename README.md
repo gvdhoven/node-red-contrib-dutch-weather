@@ -9,10 +9,10 @@ Provides several nodes for receiving (Dutch) weather related events.
 
 | Node name | Description |
 | --- | --- |
-| `sun-position` | Sun position based on calculation. |
-| `solar-events` | Solar events based on calculation. |
-| `rain-state` | Rain state based on external sources. Used are Buienradar and Buienalarm. |
-| `meteoplaza` | Weather forecast based on external source. For this Meteoplaza is used. |
+| `dutch-weather-sun-position` | Sun position based on calculation. |
+| `dutch-weather-solar-events` | Solar events based on calculation. |
+| `dutch-weather-rain-state` | Rain state based on external sources. Used are Buienradar and Buienalarm. |
+| `dutch-weather-meteoplaza` | Weather forecast based on external source. For this Meteoplaza is used. |
 
 ## Installation
 
@@ -26,20 +26,25 @@ $ npm install node-red-contrib-dutch-weather
 
 For all nodes, you'll need to create at least one configuration. Drag one of the exposed nodes to your flow and set it up just like all other config nodes. After that, you can use the event emitters in your own code.
 
-## Custom update interval (since 1.4)
+## Release 2.0
 
+* **Backwards compatible breaking change:** The nodes have been renamed.
+They have all been prefixed with "dutch-weather-" to prevent conflicts with another "sun-position" package.
+* **Refresh on (re)deploy**
+Previously any node would automatically refresh once on deployment of the flow; this is now only the case if the 'update' checkbox in the config node has been set.
+* **Solar events no longer (automatically) updated once a day**
+The solar events are only (re)calculated automatically when the flag _Refresh on (re)deploy_ is set, or when the 'trigger' command is sent at least once.
+
+
+## Release 1.4
+
+* **Custom update interval**
 By default any node will automatically refresh once on deployment of the flow. Since version 1.3.0 there is the possibility to set a custom interval for each node in the config node when it should refresh. In case you are migrating from a previous version, you should set values in the config node yourself. Entering 0 or a negative value for the update interval disables updates entirely.
-
-## Manual trigger of updates (since 1.4)
-
-All nodes now have an input. This is usefull in case you want to inject a message **with payload** `{ trigger: true }` when you require an update.
-
-## Solar events updated once a day (since 1.4)
-
+* **Input nodes / manual trigger of updates**
+All nodes now have an input. This is usefull when you require an update. Just inject a message **with payload** `{ trigger: true }`.
+* **Solar events updated only once a day**
 The solar events are (re)calculated when the flows are (re)deployed and every night at 1AM.
-
-## Buienradar and Buienalarm sources added (since 1.4)
-
+* **Buienradar and Buienalarm sources added**
 In the output node of the rainstate node, you now have a `sources` property with both `Buienradar` and `Buienalarm` as an array for the next 120 minutes.
 
 ## Testing locally
