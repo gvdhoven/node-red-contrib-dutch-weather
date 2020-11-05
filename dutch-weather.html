@@ -50,7 +50,7 @@
 
 <!-- Sun position node -->
 
-<script type="text/x-red" data-template-name="sun-position">
+<script type="text/x-red" data-template-name="dutch-weather-sun-position">
 	<div class="form-row">
 		<label for="node-input-conf"><i class="fa fa-map-marker"></i> Location configuration</label>
 		<input type="text" id="node-input-conf">
@@ -63,12 +63,12 @@
 	</div>
 </script>
 
-<script type="text/x-red" data-help-name="sun-position">
+<script type="text/x-red" data-help-name="dutch-weather-sun-position">
   <p>Provides the postion of the sun (in angle and elevation) at the interval defined in the configuration node.</p>
 </script>
 
 <script type="text/javascript">
-	RED.nodes.registerType('sun-position', {
+	RED.nodes.registerType('dutch-weather-sun-position', {
 		category: 'Dutch_Weather',
 		defaults: {
 			conf: { value: '', type: 'dutch-weather-conf', required: true },
@@ -89,7 +89,7 @@
 
 <!-- Sun events node -->
 
-<script type="text/x-red" data-template-name="solar-events">
+<script type="text/x-red" data-template-name="dutch-weather-solar-events">
 	<div class="form-row">
 		<label for="node-input-conf"><i class="fa fa-map-marker"></i> Location configuration</label>
 		<input type="text" id="node-input-conf">
@@ -102,12 +102,12 @@
 	</div>
 </script>
 
-<script type="text/x-red" data-help-name="solar-events">
+<script type="text/x-red" data-help-name="dutch-weather-solar-events">
   <p>Provides the postion of the sun (in angle and elevation) as well as solar events at the interval defined in the configuration node.</p>
 </script>
 
 <script type="text/javascript">
-	RED.nodes.registerType('solar-events', {
+	RED.nodes.registerType('dutch-weather-solar-events', {
 		category: 'Dutch_Weather',
 		defaults: {
 			conf: { value: '', type: 'dutch-weather-conf', required: true },
@@ -128,7 +128,7 @@
 
 <!-- Rain state node -->
 
-<script type="text/x-red" data-template-name="rain-state">
+<script type="text/x-red" data-template-name="dutch-weather-rain-state">
 	<div class="form-row">
 		<label for="node-input-conf"><i class="fa fa-map-marker"></i> Location configuration</label>
 		<input type="text" id="node-input-conf">
@@ -141,12 +141,12 @@
 	</div>
 </script>
 
-<script type="text/x-red" data-help-name="rain-state">
+<script type="text/x-red" data-help-name="dutch-weather-rain-state">
   <p>Provides information from the Dutch rain info provider Buienalarm at the interval defined in the configuration node.</p>
 </script>
 
 <script type="text/javascript">
-	RED.nodes.registerType('rain-state', {
+	RED.nodes.registerType('dutch-weather-rain-state', {
 		category: 'Dutch_Weather',
 		defaults: {
 			conf: { value: '', type: 'dutch-weather-conf', required: true },
@@ -167,7 +167,7 @@
 
 <!-- Meteoplaza node -->
 
-<script type="text/x-red" data-template-name="meteoplaza">
+<script type="text/x-red" data-template-name="dutch-weather-meteoplaza">
 	<div class="form-row">
 		<label for="node-input-conf"><i class="fa fa-map-marker"></i> Location configuration</label>
 		<input type="text" id="node-input-conf">
@@ -180,12 +180,12 @@
 	</div>
 </script>
 
-<script type="text/x-red" data-help-name="meteoplaza">
+<script type="text/x-red" data-help-name="dutch-weather-meteoplaza">
   <p>Provides information from the Dutch provider Meteoplaza at the interval defined in the configuration node.</p>
 </script>
 
 <script type="text/javascript">
-	RED.nodes.registerType('meteoplaza', {
+	RED.nodes.registerType('dutch-weather-meteoplaza', {
 		category: 'Dutch_Weather',
 		defaults: {
 			conf: { value: '', type: 'dutch-weather-conf', required: true },

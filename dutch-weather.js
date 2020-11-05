@@ -72,6 +72,7 @@ module.exports = function(RED) {
 		this.conf.weatherLogic.on('sun-position', function (position) {
 			node.send({ 'topic': 'sun-position', 'payload': position });
 		});
+
 		node.on('input', function(msg) {
 			if (msg && msg.hasOwnProperty('payload') && (msg.payload.trigger == true)) {
 				node.conf.weatherLogic.updateSunPosition(true);
@@ -79,7 +80,7 @@ module.exports = function(RED) {
 		});
 		setTimeout(function() { node.conf.weatherLogic.updateSunPosition(true); }, 1000);
 	}
-	RED.nodes.registerType("sun-position", dutchWeatherSunPosition);
+	RED.nodes.registerType("dutch-weather-sun-position", dutchWeatherSunPosition);
 
 
 
@@ -98,6 +99,7 @@ module.exports = function(RED) {
 		this.conf.weatherLogic.on('solar-events', function (events) {
 			node.send({ 'topic': 'solar-events', 'payload': events });
 		});
+
 		node.on('input', function(msg) {
 			if (msg && msg.hasOwnProperty('payload') && (msg.payload.trigger == true)) {
 				node.conf.weatherLogic.updateSolarEvents(true);
@@ -105,7 +107,7 @@ module.exports = function(RED) {
 		});
 		setTimeout(function() { node.conf.weatherLogic.updateSolarEvents(true); }, 1000);
 	}
-	RED.nodes.registerType("solar-events", dutchWeatherSolarEvents);
+	RED.nodes.registerType("dutch-weather-solar-events", dutchWeatherSolarEvents);
 
 
 
@@ -131,7 +133,7 @@ module.exports = function(RED) {
 		});
 		setTimeout(function() { node.conf.weatherLogic.checkRain(); }, 1000);
 	}
-	RED.nodes.registerType("rain-state", dutchWeatherRainState);
+	RED.nodes.registerType("dutch-weather-rain-state", dutchWeatherRainState);
 
 
 
@@ -158,5 +160,5 @@ module.exports = function(RED) {
 		setTimeout(function() { node.conf.weatherLogic.updateMeteoplaza(true); }, 1000);
 
 	}
-	RED.nodes.registerType("meteoplaza", dutchWeatherMeteoplaza);
+	RED.nodes.registerType("dutch-weather-meteoplaza", dutchWeatherMeteoplaza);
 }
