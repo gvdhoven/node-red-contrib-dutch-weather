@@ -9,8 +9,6 @@ Provides several nodes for receiving (Dutch) weather related events.
 
 | Node name | Description |
 | --- | --- |
-| `dutch-weather-sun-position` | Sun position based on calculation. |
-| `dutch-weather-solar-events` | Solar events based on calculation. |
 | `dutch-weather-rain-state` | Rain state based on external sources. Used are Buienradar and Buienalarm. |
 | `dutch-weather-meteoplaza` | Weather forecast based on external source. For this Meteoplaza is used. |
 
@@ -26,20 +24,14 @@ $ npm install node-red-contrib-dutch-weather
 
 For all nodes, you'll need to create at least one configuration. Drag one of the exposed nodes to your flow and set it up just like all other config nodes. After that, you can use the event emitters in your own code.
 
+## Release 2.0.3
+
+* `dutch-weather-sun-position` (and) `dutch-weather-solar-events` **removed**: There is a much better node-red node you can use: [node-red-contrib-sun-position](https://flows.nodered.org/node/node-red-contrib-sun-position/)
+* **Automatic refresh removed**: The javascript timers sometimes stopped working, which in the worst case led to rain being reported while it was already dry for days; since Node-red has timer nodes built in, i've removed the javascript timers from the code completely. In order to get updated data you have to send a message on the input of a node **with payload** `{ trigger: true }` for it to update.
+
 ## Release 2.0.0
 
-* **Backwards compatible breaking change:** The nodes have been renamed.
-They have all been prefixed with "dutch-weather-" to prevent conflicts with another "sun-position" package.
-* **Refresh on (re)deploy:** Previously any node would automatically refresh once on deployment of the flow; this is now only the case if the 'update' checkbox in the config node has been set.
-* **Solar events no longer (automatically) updated once a day:** The solar events are only (re)calculated automatically when the flag _Refresh on (re)deploy_ is set, or when the 'trigger' command is sent at least once.
-
-
-## Release 1.4.0
-
-* **Custom update interval:** By default any node will automatically refresh once on deployment of the flow. Since version 1.3.0 there is the possibility to set a custom interval for each node in the config node when it should refresh. In case you are migrating from a previous version, you should set values in the config node yourself. Entering 0 or a negative value for the update interval disables updates entirely.
-* **Input nodes / manual trigger of updates:** All nodes now have an input. This is usefull when you require an update. Just inject a message **with payload** `{ trigger: true }`.
-* **Solar events updated only once a day:** The solar events are (re)calculated when the flows are (re)deployed and every night at 1AM.
-* **Buienradar and Buienalarm sources added:** In the output node of the rainstate node, you now have a `sources` property with both `Buienradar` and `Buienalarm` as an array for the next 120 minutes.
+* **Backwards compatible breaking change:** The nodes have been renamed to prevent a conflict with the `node-red-contrib-sun-position` package.
 
 ## Testing locally
 
@@ -50,25 +42,6 @@ $ node local-test.js
 ```
 
 See below for sample messages since 2.0.x
-
-### Node `dutch-weather-sun-position` sample:
-
-    {
-       "azimuth":217.04,
-       "elevation":57.89,
-       "date":"2020-06-19T11:01:24.489Z"
-    }
-	
-
-### Node `dutch-weather-solar-events` sample:
-
-    {
-       "sunrise":"2020-06-19T05:22:17.230Z",
-       "solarNoon":"2020-06-19T13:40:55.684Z",
-       "sunset":"2020-06-19T21:59:34.137Z",
-       "goldenHourEnd":"2020-06-19T06:16:22.761Z",
-       "goldenHourStart":"2020-06-19T21:05:28.606Z"
-    }
 
 ### Node `dutch-weather-rain-state` sample:
 
