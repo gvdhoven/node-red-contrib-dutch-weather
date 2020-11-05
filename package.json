@@ -40,7 +40,7 @@
 		"dependencies": {
 				"lodash.isequal": "^4.5.0",
 				"moment": "^2.25.3",
-				"node-fetch": "^2.6.0",
+				"node-fetch": "^2.6.1",
 				"suncalc2": "^1.8.1"
 		}
 }
