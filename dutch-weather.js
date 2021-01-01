@@ -46,7 +46,7 @@ module.exports = function(RED) {
 
 		var node = this;
 		this.conf.weatherLogic.on('rain-error', function (msg) {
-			node.warn(msg);
+			node.debug(msg);
 		});
 
 		this.conf.weatherLogic.on('rain-state', function (rainState) {
