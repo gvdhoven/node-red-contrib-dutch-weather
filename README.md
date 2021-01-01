@@ -24,6 +24,10 @@ $ npm install node-red-contrib-dutch-weather
 
 For all nodes, you'll need to create at least one configuration. Drag one of the exposed nodes to your flow and set it up just like all other config nodes. After that, you can use the event emitters in your own code.
 
+## Release 2.0.6
+
+* After some time the rain-node was not giving any output anymore; the time in between working and not varies from various minutes to hours. Previously the script required both Buienradar and Meteoplaza to respond with a valid response when asking for the current rain state; this is changed so that only 1 of the systems would need to provide accurate values.
+
 ## Release 2.0.3
 
 * `dutch-weather-sun-position` (and) `dutch-weather-solar-events` **removed**: There is a much better node-red node you can use: [node-red-contrib-sun-position](https://flows.nodered.org/node/node-red-contrib-sun-position/)
