@@ -65,6 +65,5 @@ Weather.on('meteoplaza', function (meteoplaza) {
 	console.log('  - ' + JSON.stringify(meteoplaza));
 });
 
-Weather.startMonitor();
 setTimeout(function() { Weather.checkRain(); }, 1000);
 setTimeout(function() { Weather.updateMeteoplaza(); }, 1000);

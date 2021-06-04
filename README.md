@@ -24,6 +24,16 @@ $ npm install node-red-contrib-dutch-weather
 
 For all nodes, you'll need to create at least one configuration. Drag one of the exposed nodes to your flow and set it up just like all other config nodes. After that, you can use the event emitters in your own code.
 
+## Release 2.0.11
+
+* Made `meteo-plaza` a bit more resilient against failing requests.
+* Added 'random()' time to all requests to prevent caching.
+
+
+## Release 2.0.10
+
+* Ensured `prediction` field is present in rain-state even if the state remains thesame.
+
 ## Release 2.0.7
 
 * Added 'lastUpdate' field.
