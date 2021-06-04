@@ -10,7 +10,6 @@ Provides several nodes for receiving (Dutch) weather related events.
 | Node name | Description |
 | --- | --- |
 | `dutch-weather-rain-state` | Rain state based on external sources. Used are Buienradar and Buienalarm. |
-| `dutch-weather-meteoplaza` | Weather forecast based on external source. For this Meteoplaza is used. |
 
 ## Installation
 
