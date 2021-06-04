@@ -24,6 +24,12 @@ $ npm install node-red-contrib-dutch-weather
 
 For all nodes, you'll need to create at least one configuration. Drag one of the exposed nodes to your flow and set it up just like all other config nodes. After that, you can use the event emitters in your own code.
 
+## Release 2.0.12
+
+* Made `meteo-plaza` even more resilient against failing requests.
+* Changed `meteo-plaza` response `today.astro.dayLengthHrs` to `today.astro.dayLength` to match the naming of the source.
+
+
 ## Release 2.0.11
 
 * Made `meteo-plaza` a bit more resilient against failing requests.
@@ -115,7 +121,7 @@ See below for sample messages since 2.0.x
              "currentTime":"2020-06-19T15:41:47+02:00",
              "sunRise":"2020-06-19T05:21:00+02:00",
              "sunSet":"2020-06-19T21:58:00+02:00",
-             "dayLengthHrs":"16:37",
+             "dayLength":"16:37",
              "moonPhase":{
                 "newMoon":"2020-06-21 08:42",
                 "fullMoon":"2020-07-05 06:45",
