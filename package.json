@@ -1,7 +1,7 @@
 {
 		"name": "node-red-contrib-dutch-weather",
 		"version": "2.0.9",
-		"description": "Dutch weather and rain info for use with node-red",
+		"description": "Dutch rain info based on two providers for use with node-red",
 		"main": "index.js",
 		"scripts": {
 				"test": "echo \"No test specified\""
@@ -10,7 +10,6 @@
 				"node-red",
 				"Buienalarm",
 				"Buienradar",
-				"Meteoplaza",
 				"Precipitation prediction",
 				"Rainfall"
 		],
