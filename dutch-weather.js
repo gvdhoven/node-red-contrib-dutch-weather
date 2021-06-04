@@ -60,31 +60,4 @@ module.exports = function(RED) {
 		});
 	}
 	RED.nodes.registerType("dutch-weather-rain-state", dutchWeatherRainState);
-
-
-
-	/**
-	 * Meteo events node
-	 */
-	function dutchWeatherMeteoplaza(n) {
-		RED.nodes.createNode(this, n);
-		this.conf = RED.nodes.getNode(n.conf);
-
-		if (!this.conf) {
-			return null;
-		}
-
-		var node = this;
-		this.conf.weatherLogic.on('meteoplaza', function (meteoplaza) {
-			node.send({ 'topic': 'meteoplaza', 'payload': meteoplaza });
-		});
-
-		node.on('input', function(msg) {
-			if (msg && msg.hasOwnProperty('payload') && (msg.payload.trigger == true)) {
-				node.conf.weatherLogic.updateMeteoplaza(true);
-			}
-		});
-
-	}
-	RED.nodes.registerType("dutch-weather-meteoplaza", dutchWeatherMeteoplaza);
 }
