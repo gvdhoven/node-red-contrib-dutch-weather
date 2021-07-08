@@ -57,12 +57,12 @@ var Weather = new WeatherLogic(51.42408, 5.442794);
 
 Weather.on('rain-state', function (prediction) {
 	console.log('* Rain state update:');
-	console.log('  - ' + JSON.stringify(prediction));
+	console.log('  - ' + JSON.stringify(prediction, null, '\t'));
 });
 
 Weather.on('meteoplaza', function (meteoplaza) {
 	console.log('* Meteoplaza update:');
-	console.log('  - ' + JSON.stringify(meteoplaza));
+	console.log('  - ' + JSON.stringify(meteoplaza, null, '\t'));
 });
 
 setTimeout(function() { Weather.checkRain(); }, 1000);

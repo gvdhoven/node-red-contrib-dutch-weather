@@ -24,6 +24,24 @@ $ npm install node-red-contrib-dutch-weather
 
 For all nodes, you'll need to create at least one configuration. Drag one of the exposed nodes to your flow and set it up just like all other config nodes. After that, you can use the event emitters in your own code.
 
+
+## Release 3.0.0
+
+* Fixed a bug which caused the cache from Buienalarm to not be used
+* Added a workaround for invalid JSON results from Buienalarm (e.g. add a retry for a max of 3 times with a delay of a second in between) to increase chances of success
+* Added `lastFetched` property to all nodes. This contains the last time the node was updated.
+* Changed `state` property to reflect the rainfall which is based on the average of available sources for a given time:
+  * `dry` for values > 0 and < 0.2 mm/hour
+  * `light rain` for values >= 0.2 and < 1
+  * `moderate rain` for values >= 1.0 and < 2.5
+  * `heavy rain` for values >= 2.5
+* Changed `msg` property to better word the current state and prediction based on the fact if it is currently raining or not.
+* Sometimes Buienalarm or Buienradar returns an invalid result, most probably due to rate limiting.
+  * In case we did not have a previous result (for example, only 1 source is available) we change the `probability` to be based on the amount of sources available. Previously it was then 50%, but from now on; in case only 1 source is available the probability will be 100%.
+  * In case we already had a valid result before, we re-use those results. This prevents 'flippering' values from a valid result to -1 back to a valid result etc.
+* Breaking change: Changed the precipitation `in minutes` response to actual javascript dates, needed for the 'rain state at time' feature and in case either source gave an invalid result so we can re-baseline based on date/times.
+
+
 ## Release 2.0.12
 
 * Made `meteo-plaza` even more resilient against failing requests.
@@ -93,7 +111,7 @@ See below for sample messages since 2.0.x
           "message":"..."
        }
     }
-	
+
 
 ### Node `dutch-weather-meteoplaza` sample:
 
